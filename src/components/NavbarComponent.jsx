@@ -4,6 +4,7 @@ import { IoLogOut } from 'react-icons/io5';
 import { FaWpforms } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import { MdBusinessCenter } from 'react-icons/md';
+import { handleLogout } from '../helpers/handleLogout';
 
 export const NavbarComponent = () => {
   return (
@@ -30,12 +31,7 @@ export const NavbarComponent = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/auth/login"
-            onClick={() => {
-              localStorage.removeItem('authToken');
-            }}
-          >
+          <NavLink to="/auth/login" onClick={() => handleLogout()}>
             <IoLogOut className="w-6 h-6 lg:w-10 lg:h-10  hover:text-white hover:scale-125 transition-all. duration-300" />
           </NavLink>
         </li>

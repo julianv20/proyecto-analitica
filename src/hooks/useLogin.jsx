@@ -17,6 +17,7 @@ const authLogin = async (data) => {
 
 export const useLogin = (data) => {
   const navigate = useNavigate();
+  const token = localStorage.getItem('authToken');
 
   const {
     isLoading: loading,
@@ -24,7 +25,9 @@ export const useLogin = (data) => {
     isIdle,
     refetch,
   } = useQuery('auth', () => authLogin(data), {
-    enabled: false,
+    enabled: token ? true : false,
+    staleTime: Infinity,
+    cacheTime: Infinity, // Mantener la data en caché indefinidamente
     onSuccess: () => {
       // Esta función se ejecutará cuando la solicitud sea exitosa
       navigate('/');

@@ -1,3 +1,4 @@
+import { useQueryClient } from 'react-query';
 import { GraphsComponents } from '../../components/analitica/GraphsComponents';
 
 const dashboards = [
@@ -20,6 +21,9 @@ const dashboards = [
 ];
 
 export const Dashbards = () => {
+  const queryClient = useQueryClient();
+  const customer = queryClient.getQueriesData(['customers']);
+  const dashboards = customer[0][1]?.companies || [];
   return (
     <section className="grid w-full p-5 grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-5">
       {dashboards.map((folder) => (
