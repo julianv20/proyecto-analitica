@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
   },
 
   {
-    path: 'analitica',
+    path: 'analitica/:id',
     element: <ProtectedRoute element={<LayoutHome />} />,
     children: [
       {
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         element: <FormPage />,
       },
       {
-        path: '1',
+        path: ':id',
         element: <FormServices />,
       },
     ],

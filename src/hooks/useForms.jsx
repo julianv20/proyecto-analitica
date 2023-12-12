@@ -1,10 +1,10 @@
 import api from '../lib/axios';
 import { useQuery } from 'react-query';
 
-const getHome = async (token) => {
+const getAllForms = async (id, token) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
-    const response = await api.get(`/home/get/customer`, {
+    const response = await api.get(`form/get/${id}`, {
       headers: {
         token: token,
       },
@@ -16,13 +16,13 @@ const getHome = async (token) => {
   }
 };
 
-export const useCustomer = (HomeData) => {
+export const useForms = (id, token) => {
   const { data, error, isLoading, isFetching } = useQuery(
-    'customers',
-    () => getHome(HomeData),
+    ['forms', id],
+    () => getAllForms(id, token),
     {
       staleTime: 60000,
-      refetchInterval: 300000,
+      refetchInterval: 60000,
       refetchOnWindowFocus: false,
       refetchOnMount: false,
     },

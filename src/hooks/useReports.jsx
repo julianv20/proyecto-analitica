@@ -1,28 +1,27 @@
-import api from '../lib/axios';
 import { useQuery } from 'react-query';
+import api from '../lib/axios';
 
-const getHome = async (token) => {
+const getAllReports = async (id, token) => {
   try {
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
-    const response = await api.get(`/home/get/customer`, {
+    const response = await api.get(`report/get/${id}`, {
       headers: {
         token: token,
       },
     });
+    console.log(response);
     return response.data;
   } catch (error) {
-    console.log(error);
     throw error.response.data.error;
   }
 };
 
-export const useCustomer = (HomeData) => {
+export const useReports = (id, token) => {
   const { data, error, isLoading, isFetching } = useQuery(
-    'customers',
-    () => getHome(HomeData),
+    ['report', id],
+    () => getAllReports(id, token),
     {
       staleTime: 60000,
-      refetchInterval: 300000,
+      refetchInterval: 60000,
       refetchOnWindowFocus: false,
       refetchOnMount: false,
     },

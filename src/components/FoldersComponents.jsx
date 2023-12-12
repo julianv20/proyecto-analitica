@@ -5,15 +5,15 @@ export const FoldersComponents = ({ customer, index }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center " key={customer.id}>
+    <div className="flex flex-col items-center ">
       <img
         src={imageFolder}
-        alt={customer.companyName}
+        alt={customer.nameCustomer}
         className="cursor-pointer hover:scale-105 transition-transform duration-300"
-        onClick={() => navigate('/analitica')}
+        onClick={() => navigate(`/analitica/${customer.idCustomer}`)}
       />
       <p className="text-neutral-100 text-xl font-light">
-        {customer.companyName}
+        {customer.nameCustomer}
       </p>
     </div>
   );

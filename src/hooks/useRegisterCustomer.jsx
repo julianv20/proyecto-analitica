@@ -2,18 +2,18 @@ import { useState } from 'react';
 import api from '../lib/axios';
 import { alertSuccess } from '../helpers/alert';
 
-export const useRegister = () => {
+export const useRegisterCustomer = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
 
-  const authRegister = async (data) => {
+  const authRegisterCustomer = async (data) => {
     const token = localStorage.getItem('authToken');
     try {
       setError(null);
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      const response = await api.post('/auth/register/empleado', data, {
+      const response = await api.post('/auth/register/customer', data, {
         headers: {
           token: token,
         },
@@ -34,6 +34,6 @@ export const useRegister = () => {
     loading,
     error,
     data,
-    authRegister,
+    authRegisterCustomer,
   };
 };
