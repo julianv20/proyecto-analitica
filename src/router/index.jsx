@@ -8,12 +8,26 @@ import { FormServices } from '../pages/form/empresa1/FormServices';
 import { PublicRoute } from './PublicRoute';
 import { ProtectedRoute } from './ProtectedRoute';
 import { Dashbards } from '../pages/dashboards/Dashbards';
-import { GraphServices } from '../pages/dashboards/GraphServices';
+import { ServicesReport } from '../pages/dashboards/odontologia/ServicesReport';
+import { ClientesReport } from '../pages/dashboards/odontologia/ClientesReport';
+import { CitasReport } from '../pages/dashboards/odontologia/CitasReport';
+import { InsumosReport } from '../pages/dashboards/odontologia/InsumosReport';
 
 export const router = createBrowserRouter([
   {
     path: '/auth/login',
     element: <PublicRoute element={<LoginPage />} />,
+  },
+
+  {
+    path: 'register',
+    element: <ProtectedRoute element={<LayoutHome />} />,
+    children: [
+      {
+        path: 'agente',
+        element: <RegisterPage />,
+      },
+    ],
   },
 
   {
@@ -36,8 +50,20 @@ export const router = createBrowserRouter([
         element: <Dashbards />,
       },
       {
-        path: 'services/:id',
-        element: <GraphServices />,
+        path: 'odontologia/cantidaddeserviciosvendidos/:id',
+        element: <ServicesReport />,
+      },
+      {
+        path: 'odontologia/clientesporservicio/:id',
+        element: <ClientesReport />,
+      },
+      {
+        path: 'odontologia/citasasignadas/:id',
+        element: <CitasReport />,
+      },
+      {
+        path: 'odontologia/insumos/:id',
+        element: <CitasReport />,
       },
     ],
   },
@@ -53,17 +79,6 @@ export const router = createBrowserRouter([
       {
         path: ':id',
         element: <FormServices />,
-      },
-    ],
-  },
-
-  {
-    path: 'register',
-    element: <ProtectedRoute element={<LayoutHome />} />,
-    children: [
-      {
-        path: 'agente',
-        element: <RegisterPage />,
       },
     ],
   },

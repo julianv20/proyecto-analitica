@@ -13,7 +13,7 @@ export const NavbarComponent = () => {
   const customer = useQuery.getQueriesData(['customers']);
   const role = customer[0][1]?.role || 3;
   return (
-    <nav className="bg-[#00A38B] w-auto sm:w-28 h-screen">
+    <nav className="bg-[#5438ce] w-auto sm:w-28 h-screen">
       <ul className="flex flex-col items-center justify-center h-full text-neutral-100 space-y-5">
         <li>
           <NavLink to="/">

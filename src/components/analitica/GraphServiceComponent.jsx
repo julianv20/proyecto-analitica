@@ -26,11 +26,11 @@ export const GraphServiceComponent = ({ data }) => {
           }}
         >
           <CartesianGrid strokeDasharray="4 1 2" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="nombre_servicio" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="amount" fill="#6b48ff" />
+          <Bar dataKey="cantidad_servicios_vendidos" fill="#6b48ff" />
         </BarChart>
       </ResponsiveContainer>
     </div>

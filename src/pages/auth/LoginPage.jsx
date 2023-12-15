@@ -123,12 +123,12 @@ export const LoginPage = () => {
               <button
                 disabled
                 type="button"
-                className="text-white bg-[rgb(26,118,104)] cursor-pointer hover:bg-[rgb(63,138,125)] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 text-sm text-center me-2  dark:focus:ring-blue-800 inline-flex items-center mt-5 w-full"
+                className="text-white bg-[#5438CE] cursor-pointer hover:bg-[#3a2694] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 text-sm text-center me-2  dark:focus:ring-blue-800 inline-flex items-center mt-5 w-full"
               >
                 Loading...
               </button>
             ) : (
-              <button className="bg-[rgb(26,118,104)] rounded-lg px-3 py-2 mt-5 text-neutral-100 font-semibold text-sm hover:bg-[rgb(63,138,125)] transition-colors duration-300">
+              <button className="bg-[#5438CE] rounded-lg px-3 py-2 mt-5 text-neutral-100 font-semibold text-sm hover:bg-[#3a2694]  transition-colors duration-300">
                 Entrar
               </button>
             )}

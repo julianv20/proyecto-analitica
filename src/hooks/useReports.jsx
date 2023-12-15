@@ -17,11 +17,11 @@ const getAllReports = async (id, token) => {
 
 export const useReports = (id, token) => {
   const { data, error, isLoading, isFetching } = useQuery(
-    ['report', id],
+    ['reports', id],
     () => getAllReports(id, token),
     {
       staleTime: 60000,
-      refetchInterval: 60000,
+      refetchInterval: 300000,
       refetchOnWindowFocus: false,
       refetchOnMount: false,
     },

@@ -1,3 +1,4 @@
+import { handleLogout } from '../helpers/handleLogout';
 import api from '../lib/axios';
 import { useQuery } from 'react-query';
 
@@ -11,7 +12,9 @@ const getHome = async (token) => {
     });
     return response.data;
   } catch (error) {
-    console.log(error);
+    if (error.response.data.error === 'Token no válido') {
+      handleLogout();
+    }
     throw error.response.data.error;
   }
 };
