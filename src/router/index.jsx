@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'odontologia/insumos/:id',
-        element: <CitasReport />,
+        element: <InsumosReport />,
       },
     ],
   },

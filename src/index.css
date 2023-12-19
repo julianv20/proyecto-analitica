@@ -8,3 +8,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
+
+.table {
+  padding: 2rem;
+}

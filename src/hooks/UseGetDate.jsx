@@ -36,5 +36,7 @@ export const UseGetDate = () => {
     dateRange,
     formattedDates,
     handleDateChange,
+    setFormattedDates,
+    setDateRange,
   };
 };
