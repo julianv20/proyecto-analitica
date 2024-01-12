@@ -48,6 +48,11 @@ const columns = [
     footer: 'Nombre del Servicio',
   },
   {
+    header: 'Cantidad de Citas',
+    accessorKey: 'cantidad_citas',
+    focus: 'Cantidad de Citas',
+  },
+  {
     header: 'Precio del Servicio',
     accessorKey: 'precio_servicio',
     footer: 'Precio del Servicio',

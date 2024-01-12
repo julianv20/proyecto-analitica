@@ -12,6 +12,8 @@ import { ServicesReport } from '../pages/dashboards/odontologia/ServicesReport';
 import { ClientesReport } from '../pages/dashboards/odontologia/ClientesReport';
 import { CitasReport } from '../pages/dashboards/odontologia/CitasReport';
 import { InsumosReport } from '../pages/dashboards/odontologia/InsumosReport';
+import { RegisterCllient } from '../pages/form/odontologia/RegisterCllient';
+import { CitasClient } from '../pages/form/odontologia/CitasClient';
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +81,14 @@ export const router = createBrowserRouter([
       {
         path: ':id',
         element: <FormServices />,
+      },
+      {
+        path: ':id/odontologia/Formularioregistrarcliente/:id',
+        element: <RegisterCllient />,
+      },
+      {
+        path: ':id/odontologia/Formularioagendarcita/:id',
+        element: <CitasClient />,
       },
     ],
   },

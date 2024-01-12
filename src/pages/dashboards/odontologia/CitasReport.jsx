@@ -43,6 +43,11 @@ const columns = [
     footer: 'Fecha de Cita',
   },
   {
+    header: 'Hora',
+    accessorKey: 'hora_cita',
+    footer: 'Hora',
+  },
+  {
     header: 'Género',
     accessorKey: 'nombre_genero',
     footer: 'Género',
@@ -51,6 +56,11 @@ const columns = [
     header: 'Teléfono',
     accessorKey: 'telefono',
     footer: 'Teléfono',
+  },
+  {
+    header: 'Nombre Servicio',
+    accessorKey: 'nombre_servicio',
+    footer: 'Nombre Servicio',
   },
 ];
 
