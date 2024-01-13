@@ -1,75 +1,77 @@
-import { useForm } from 'react-hook-form';
-import { LoadingComponent } from '../../../components/LoadingComponent';
-import { UseGetDate } from '../../../hooks/UseGetDate';
-import { useServicesClient } from '../../../hooks/useServices';
-import DatePicker from 'react-datepicker';
-import { useGeneros } from '../../../hooks/useGenero';
-import { useNewClientOdontologia } from '../../../hooks/useClientOdontologia';
-import { LoadingSmallComponent } from '../../../components/LoadingSmallComponent';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form'
+import { LoadingComponent } from '../../../components/LoadingComponent'
+import { UseGetDate } from '../../../hooks/UseGetDate'
+import { useServicesClient } from '../../../hooks/useServices'
+import DatePicker from 'react-datepicker'
+import { useGeneros } from '../../../hooks/useGenero'
+import { useNewClientOdontologia } from '../../../hooks/useClientOdontologia'
+import { LoadingSmallComponent } from '../../../components/LoadingSmallComponent'
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 export const RegisterCllient = () => {
-  const { id } = useParams();
+  const { id } = useParams()
 
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
-    reset,
-  } = useForm();
+    formState: { errors }
+  } = useForm()
 
-  const { data, error, isLoading, isFetching } = useServicesClient();
+  const { data, error, isLoading, isFetching } = useServicesClient()
   const {
     data: genders,
     error: isErrorGender,
-    isLoading: isLoadingGender,
-  } = useGeneros();
+    isLoading: isLoadingGender
+  } = useGeneros()
 
   const {
     loading,
     error: isError,
     data: client,
-    newClientOdontologia,
-  } = useNewClientOdontologia();
+    newClientOdontologia
+  } = useNewClientOdontologia()
 
   const {
     dateRange,
     formattedDates,
     handleDateChange,
     setFormattedDates,
-    setDateRange,
-  } = UseGetDate();
+    setDateRange
+  } = UseGetDate()
 
   useEffect(() => {
     setDateRange({
-      startDate: new Date(),
-    });
-  }, []);
+      startDate: new Date()
+    })
+  }, [])
 
   const onSubmit = handleSubmit((data) => {
     const dataWithDate = {
       ...data,
       montoCancelado: parseInt(data.montoCancelado),
-      fecha_nacimiento: formattedDates.startDate,
-    };
+      fecha_nacimiento: formattedDates.startDate
+    }
 
-    console.log(dataWithDate);
-    newClientOdontologia(dataWithDate, id);
-  });
+    console.log(dataWithDate)
+    newClientOdontologia(dataWithDate, id)
+  })
 
   return (
     <>
       {isLoading || isLoadingGender ? (
         <LoadingComponent />
       ) : (
-        <section className="container mx-auto">
-          <div className="bg-neutral-100/60 p-5 mt-10 rounded-lg">
-            <form
-              className="grid md:grid-cols-2 gap-x-5"
-              onSubmit={handleSubmit(onSubmit)}
-            >
+        <section className="min-h-screen flex flex-col justify-center items-center p-5 xl:p-0">
+          <h2 className="text-3xl font-black text-neutral-100">
+            Registrar Cliente
+          </h2>
+          <form
+            // className="grid md:grid-cols-2 gap-x-5"
+            className="bg-neutral-100/60 p-5 rounded-lg mt-10 w-full md:w-11/12  xl:w-1/2"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="grid md:grid-cols-2 gap-x-5">
               <div className="flex flex-col">
                 <label
                   className="font-light mt-5 text-2xl text-neutral-900"
@@ -82,7 +84,7 @@ export const RegisterCllient = () => {
                   name="nombre"
                   id="name"
                   {...register('nombre', {
-                    required: 'El nombre es requerido',
+                    required: 'El nombre es requerido'
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 />
@@ -101,7 +103,7 @@ export const RegisterCllient = () => {
                   name="apellido"
                   id="lastname"
                   {...register('apellido', {
-                    required: 'El apellido es requerido',
+                    required: 'El apellido es requerido'
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 />
@@ -122,7 +124,7 @@ export const RegisterCllient = () => {
                   name="cedula"
                   id="cedula"
                   {...register('cedula', {
-                    required: 'La cédula es requerida',
+                    required: 'La cédula es requerida'
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 />
@@ -144,8 +146,8 @@ export const RegisterCllient = () => {
                     required: 'El email es requerido',
                     pattern: {
                       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                      message: 'El email no es válido',
-                    },
+                      message: 'El email no es válido'
+                    }
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 />
@@ -168,8 +170,8 @@ export const RegisterCllient = () => {
                     required: 'El número telefónico es requerido',
                     pattern: {
                       value: /^[0-9]{10}$/, // Asegura que tenga exactamente 10 dígitos
-                      message: 'El número telefónico debe tener 10 dígitos',
-                    },
+                      message: 'El número telefónico debe tener 10 dígitos'
+                    }
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 />
@@ -192,7 +194,7 @@ export const RegisterCllient = () => {
                   name="direccion"
                   id="address"
                   {...register('direccion', {
-                    required: 'La dirección es requerida',
+                    required: 'La dirección es requerida'
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 />
@@ -212,7 +214,7 @@ export const RegisterCllient = () => {
                   name="genero"
                   id="genero"
                   {...register('genero', {
-                    required: 'Selecciona tu genero',
+                    required: 'Selecciona tu genero'
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 >
@@ -253,7 +255,7 @@ export const RegisterCllient = () => {
                   name="services"
                   id="services"
                   {...register('ID_servicio', {
-                    required: 'Selecciona un servicio',
+                    required: 'Selecciona un servicio'
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 >
@@ -284,7 +286,7 @@ export const RegisterCllient = () => {
                   name="cantidad_citas"
                   id="citas"
                   {...register('cantidad_citas', {
-                    required: 'la cantidad de citas  es requerida',
+                    required: 'la cantidad de citas  es requerida'
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 />
@@ -305,7 +307,7 @@ export const RegisterCllient = () => {
                   name="montoCancelado"
                   id="montoCancelado"
                   {...register('montoCancelado', {
-                    required: 'El monto cancelado es requerido',
+                    required: 'El monto cancelado es requerido'
                   })}
                   className="px-3 py-2 rounded-lg  bg-neutral-100 focus:outline-none"
                 />
@@ -314,28 +316,27 @@ export const RegisterCllient = () => {
                     {errors.montoCancelado.message}
                   </span>
                 )}
-
-                {loading ? (
-                  <LoadingSmallComponent />
-                ) : (
-                  <button
-                    type="submit"
-                    className="bg-[#5438CE] rounded-lg px-3 py-2 mt-5 text-neutral-100 font-semibold text-sm hover:bg-[#3a2694] transition-colors duration-300"
-                  >
-                    Crear
-                  </button>
-                )}
-
-                {isError && (
-                  <div className="text-center mt-2 font-semibold text-red-500">
-                    {isError}
-                  </div>
-                )}
               </div>
-            </form>
-          </div>
+            </div>
+            {loading ? (
+              <LoadingSmallComponent />
+            ) : (
+              <button
+                type="submit"
+                className="bg-[#5438CE]  w-full rounded-lg px-3 py-2 mt-5 text-neutral-100 font-semibold text-sm hover:bg-[#3a2694] transition-colors duration-300"
+              >
+                Crear
+              </button>
+            )}
+
+            {isError && (
+              <div className="text-center mt-2 font-semibold text-red-500">
+                {isError}
+              </div>
+            )}
+          </form>
         </section>
       )}
     </>
-  );
-};
+  )
+}

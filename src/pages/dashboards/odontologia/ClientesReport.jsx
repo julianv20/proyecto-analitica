@@ -1,122 +1,122 @@
-import React from 'react';
-import { UseGetDate } from '../../../hooks/UseGetDate';
-import { useReport } from '../../../hooks/useReport';
-import { useParams } from 'react-router-dom';
-import TabletClientsComponent from '../../../components/analitica/TabletClientsComponent';
-import { LoadingComponent } from '../../../components/LoadingComponent';
-import { DatePickerComponent } from '../../../components/DatePickerComponent';
+import React from 'react'
+import { UseGetDate } from '../../../hooks/UseGetDate'
+import { useReport } from '../../../hooks/useReport'
+import { useParams } from 'react-router-dom'
+import TabletClientsComponent from '../../../components/analitica/TabletClientsComponent'
+import { LoadingComponent } from '../../../components/LoadingComponent'
+import { DatePickerComponent } from '../../../components/DatePickerComponent'
 
 const columns = [
   {
     header: 'ID',
-    accessorKey: 'ID_servicio_vendido',
-    footer: 'ID',
+    accessorKey: 'id',
+    footer: 'ID'
   },
   {
     header: 'Cedula',
     accessorKey: 'cedula',
-    footer: 'Cedula',
+    footer: 'Cedula'
   },
   {
     header: 'Nombre',
     accessorKey: 'nombre',
-    footer: 'Nombre',
+    footer: 'Nombre'
   },
   {
     header: 'Apellido',
     accessorKey: 'apellido',
-    footer: 'Apellido',
+    footer: 'Apellido'
   },
   {
     header: 'Correo Electrónico',
     accessorKey: 'correo_electronico',
-    footer: 'Correo Electrónico',
+    footer: 'Correo Electrónico'
   },
   {
     header: 'Fecha de Nacimiento',
     accessorKey: 'fecha_nacimiento',
-    footer: 'Fecha de Nacimiento',
+    footer: 'Fecha de Nacimiento'
   },
   {
     header: 'Teléfono',
     accessorKey: 'telefono',
-    footer: 'Teléfono',
+    footer: 'Teléfono'
   },
   {
     header: 'Nombre del Servicio',
     accessorKey: 'nombre_servicio',
-    footer: 'Nombre del Servicio',
+    footer: 'Nombre del Servicio'
   },
   {
     header: 'Cantidad de Citas',
     accessorKey: 'cantidad_citas',
-    focus: 'Cantidad de Citas',
+    focus: 'Cantidad de Citas'
   },
   {
     header: 'Precio del Servicio',
     accessorKey: 'precio_servicio',
-    footer: 'Precio del Servicio',
+    footer: 'Precio del Servicio'
   },
   {
     header: 'Fecha de Adquisición',
     accessorKey: 'fecha_adquisicion',
-    footer: 'Fecha de Adquisición',
+    footer: 'Fecha de Adquisición'
   },
   {
     header: 'Monto Cancelado',
     accessorKey: 'monto_cancelado',
-    footer: 'Monto Cancelado',
+    footer: 'Monto Cancelado'
   },
 
   {
     header: 'Fecha de Pago',
     accessorKey: 'fecha_pago',
-    footer: 'Fecha de Pago',
+    footer: 'Fecha de Pago'
   },
   {
     header: 'Cancelado',
     accessorKey: 'cancelado',
-    footer: 'Cancelado',
-  },
-];
+    footer: 'Cancelado'
+  }
+]
 
 export const ClientesReport = () => {
-  const { id: idReport } = useParams();
-  console.log(idReport);
+  const { id: idReport } = useParams()
+  console.log(idReport)
   const {
     dateRange,
     formattedDates,
     handleDateChange,
     setFormattedDates,
-    setDateRange,
-  } = UseGetDate();
+    setDateRange
+  } = UseGetDate()
 
-  const { data, error, isLoading, isFetching, refetch } = useReport(
+  const { data, isLoading, isFetching, refetch } = useReport(
     idReport,
-    formattedDates,
-  );
+    formattedDates
+  )
 
-  console.log(data);
+  console.log(data)
   const handleSubmit = (e) => {
-    e.preventDefault();
-    refetch();
-  };
+    e.preventDefault()
+    refetch()
+  }
 
   const reset = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     setDateRange({
       startDate: null,
-      endDate: null,
-    });
+      endDate: null
+    })
 
     setFormattedDates({
       startDate: null,
-      endDate: null,
-    });
+      endDate: null
+    })
 
-    refetch();
-  };
+    refetch()
+  }
 
   return (
     <div>
@@ -155,5 +155,5 @@ export const ClientesReport = () => {
         </section>
       )}
     </div>
-  );
-};
+  )
+}

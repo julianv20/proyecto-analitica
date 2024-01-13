@@ -1,12 +1,12 @@
-import { useParams } from 'react-router-dom';
-import { GraphsComponents } from '../../components/analitica/GraphsComponents';
-import { LoadingComponent } from '../../components/LoadingComponent';
-import { useReports } from '../../hooks/useReports';
+import { useParams } from 'react-router-dom'
+import { GraphsComponents } from '../../components/analitica/GraphsComponents'
+import { LoadingComponent } from '../../components/LoadingComponent'
+import { useReports } from '../../hooks/useReports'
 
 export const Dashbards = () => {
-  const token = localStorage.getItem('authToken');
-  const { id } = useParams();
-  const { data, error, isLoading, isFetching } = useReports(id, token);
+  const token = localStorage.getItem('authToken')
+  const { id } = useParams()
+  const { data, isLoading } = useReports(id, token)
   return (
     <>
       {isLoading ? (
@@ -19,5 +19,5 @@ export const Dashbards = () => {
         </section>
       )}
     </>
-  );
-};
+  )
+}

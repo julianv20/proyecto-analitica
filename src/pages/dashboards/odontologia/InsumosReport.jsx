@@ -1,82 +1,87 @@
-import { useParams } from 'react-router-dom';
-import { UseGetDate } from '../../../hooks/UseGetDate';
-import { useReport } from '../../../hooks/useReport';
-import { LoadingComponent } from '../../../components/LoadingComponent';
-import TabletClientsComponent from '../../../components/analitica/TabletClientsComponent';
-import { DatePickerComponent } from '../../../components/DatePickerComponent';
+import { useParams } from 'react-router-dom'
+import { UseGetDate } from '../../../hooks/UseGetDate'
+import { useReport } from '../../../hooks/useReport'
+import { LoadingComponent } from '../../../components/LoadingComponent'
+import TabletClientsComponent from '../../../components/analitica/TabletClientsComponent'
+import { DatePickerComponent } from '../../../components/DatePickerComponent'
 
 const columns = [
   {
-    header: 'Cantidad Usada',
-    accessorKey: 'cantidad_usada',
-    footer: 'Cantidad Usada',
+    header: 'ID',
+    accessorKey: 'id',
+    footer: 'ID'
   },
   {
     header: 'Fecha de Compra',
     accessorKey: 'fecha_compra',
-    footer: 'Fecha de Compra',
+    footer: 'Fecha de Compra'
   },
   {
     header: 'Nombre del Insumo',
     accessorKey: 'nombre_insumo',
-    footer: 'Nombre del Insumo',
+    footer: 'Nombre del Insumo'
+  },
+  {
+    header: 'Descripcion del Insumo',
+    accessorKey: 'descripcion_insumo',
+    footer: 'Descripcion del Insumo'
   },
   {
     header: 'Precio Unitario',
     accessorKey: 'precio_unitario',
-    footer: 'Precio Unitario',
+    footer: 'Precio Unitario'
   },
   {
     header: 'Stock Disponible',
     accessorKey: 'stock_disponible',
-    footer: 'Stock Disponible',
+    footer: 'Stock Disponible'
   },
   {
     header: 'Total Valor',
     accessorKey: 'total_valor',
-    footer: 'Total Valor',
-  },
-];
+    footer: 'Total Valor'
+  }
+]
 
 export const InsumosReport = () => {
-  const { id: idReport } = useParams();
+  const { id: idReport } = useParams()
 
   const {
     dateRange,
     formattedDates,
     handleDateChange,
     setFormattedDates,
-    setDateRange,
-  } = UseGetDate();
+    setDateRange
+  } = UseGetDate()
 
   const { data, error, isLoading, isFetching, refetch } = useReport(
     idReport,
-    formattedDates,
-  );
+    formattedDates
+  )
 
-  console.log(data);
+  console.log(data)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    refetch();
-    console.log(formattedDates);
-  };
+    e.preventDefault()
+    refetch()
+    console.log(formattedDates)
+  }
 
   const reset = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     setDateRange({
       startDate: null,
-      endDate: null,
-    });
+      endDate: null
+    })
 
     setFormattedDates({
       startDate: null,
-      endDate: null,
-    });
+      endDate: null
+    })
 
-    refetch();
-  };
+    refetch()
+  }
 
   return (
     <div>
@@ -115,5 +120,5 @@ export const InsumosReport = () => {
         </section>
       )}
     </div>
-  );
-};
+  )
+}

@@ -4,14 +4,14 @@ import {
   flexRender,
   getPaginationRowModel,
   getSortedRowModel,
-  getFilteredRowModel,
-} from '@tanstack/react-table';
+  getFilteredRowModel
+} from '@tanstack/react-table'
 
-import { useState } from 'react';
+import { useState } from 'react'
 
 function TabletClientsComponent({ data, columns }) {
-  const [sorting, setSorting] = useState([]);
-  const [filtering, setFiltering] = useState('');
+  const [sorting, setSorting] = useState([])
+  const [filtering, setFiltering] = useState('')
 
   const table = useReactTable({
     data,
@@ -22,11 +22,11 @@ function TabletClientsComponent({ data, columns }) {
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
-      globalFilter: filtering,
+      globalFilter: filtering
     },
     onSortingChange: setSorting,
-    onGlobalFilterChange: setFiltering,
-  });
+    onGlobalFilterChange: setFiltering
+  })
 
   return (
     <section className="container mx-auto mt-5">
@@ -53,7 +53,7 @@ function TabletClientsComponent({ data, columns }) {
                       <div>
                         {flexRender(
                           header.column.columnDef.header,
-                          header.getContext(),
+                          header.getContext()
                         )}
 
                         {
@@ -69,15 +69,24 @@ function TabletClientsComponent({ data, columns }) {
             ))}
           </thead>
           <tbody>
-            {table.getRowModel().rows.map((row, index) => (
-              <tr key={index}>
-                {row.getVisibleCells().map((cell, subIndex) => (
-                  <td key={subIndex} className="p-2 border border-neutral-700">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {table.getRowModel().rows.map((row) => {
+              console.log(row.original)
+              return (
+                <tr key={row.original.id}>
+                  {row.getVisibleCells().map((cell, subIndex) => (
+                    <td
+                      key={subIndex}
+                      className="p-2 border border-neutral-700"
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              )
+            })}
           </tbody>
           <tfoot>
             {table.getFooterGroups().map((footerGroup, index) => (
@@ -86,7 +95,7 @@ function TabletClientsComponent({ data, columns }) {
                   <th key={subIndex}>
                     {flexRender(
                       footer.column.columnDef.footer,
-                      footer.getContext(),
+                      footer.getContext()
                     )}
                   </th>
                 ))}
@@ -126,7 +135,7 @@ function TabletClientsComponent({ data, columns }) {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default TabletClientsComponent;
+export default TabletClientsComponent
